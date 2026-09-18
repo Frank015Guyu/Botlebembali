@@ -1,0 +1,446 @@
+html = r'''<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Botlebembali Trading CC — Integrated Supply, Catering & Landscaping Solutions. 19+ years in service. Level 1 B-BBEE Contributor. 100% Black Owned. Serving all provinces of South Africa.">
+<meta name="keywords" content="Botlebembali Trading, catering, landscaping, general supply, South Africa, B-BBEE Level 1">
+<title>Botlebembali Trading CC | Integrated Supply, Catering & Landscaping Solutions</title>
+<style>
+  :root{
+    --gold:#f5b942; --gold-dark:#e0a422; --charcoal:#2b2b2b; --ink:#1f1f1f;
+    --grey:#6b6b6b; --light:#faf7f0; --white:#ffffff; --green:#3e7c4f;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:"Segoe UI",Arial,Helvetica,sans-serif;color:var(--ink);background:var(--white);line-height:1.6;}
+  img{max-width:100%;display:block;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  .container{max-width:1140px;margin:0 auto;padding:0 20px;}
+
+  /* ===== Top bar ===== */
+  .topbar{background:var(--charcoal);color:#fff;font-size:.85rem;}
+  .topbar .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;padding-top:8px;padding-bottom:8px;}
+  .topbar span{display:inline-flex;align-items:center;gap:6px;}
+
+  /* ===== Header / Nav ===== */
+  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);border-bottom:3px solid var(--gold);box-shadow:0 2px 12px rgba(0,0,0,.08);}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;max-width:1140px;margin:0 auto;}
+  .logo{font-size:1.35rem;font-weight:800;letter-spacing:.5px;}
+  .logo em{font-style:normal;color:var(--gold-dark);}
+  .logo small{display:block;font-size:.62rem;letter-spacing:2.5px;color:var(--grey);font-weight:600;}
+  .nav-links{display:flex;gap:26px;align-items:center;}
+  .nav-links a{font-weight:600;font-size:.92rem;color:var(--charcoal);transition:color .2s;}
+  .nav-links a:hover{color:var(--gold-dark);}
+  .nav-cta{background:var(--gold);color:var(--charcoal)!important;padding:9px 20px;border-radius:6px;font-weight:700!important;}
+  .nav-cta:hover{background:var(--gold-dark);}
+  .burger{display:none;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--charcoal);}
+  @media(max-width:900px){
+    .burger{display:block;}
+    .nav-links{position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;padding:18px 20px 24px;gap:16px;border-bottom:3px solid var(--gold);display:none;}
+    .nav-links.open{display:flex;}
+  }
+
+  /* ===== Hero ===== */
+  .hero{background:linear-gradient(135deg,rgba(31,31,31,.92),rgba(43,43,43,.85)), radial-gradient(circle at 80% 20%, #f5b94233, transparent 50%), var(--charcoal);color:#fff;padding:96px 0 84px;}
+  .hero .badge{display:inline-block;background:var(--gold);color:var(--charcoal);font-weight:800;font-size:.75rem;letter-spacing:2px;padding:6px 14px;border-radius:20px;margin-bottom:22px;text-transform:uppercase;}
+  .hero h1{font-size:clamp(1.9rem,4.5vw,3.1rem);line-height:1.15;max-width:820px;}
+  .hero h1 span{color:var(--gold);}
+  .hero p{max-width:640px;margin:20px 0 34px;color:#e8e4da;font-size:1.08rem;}
+  .hero .badges{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px;}
+  .hero .badges div{border:1px solid #ffffff33;background:#ffffff0d;padding:10px 18px;border-radius:8px;font-size:.9rem;}
+  .hero .badges strong{color:var(--gold);display:block;font-size:1.15rem;}
+  .btn{display:inline-block;padding:14px 30px;border-radius:8px;font-weight:700;transition:transform .15s, background .2s;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn-gold{background:var(--gold);color:var(--charcoal);}
+  .btn-gold:hover{background:var(--gold-dark);}
+  .btn-outline{border:2px solid var(--gold);color:var(--gold);margin-left:12px;}
+  .btn-outline:hover{background:var(--gold);color:var(--charcoal);}
+  @media(max-width:560px){.btn-outline{margin-left:0;margin-top:12px;}}
+
+  /* ===== Sections ===== */
+  section{padding:78px 0;}
+  .section-alt{background:var(--light);}
+  .kicker{color:var(--gold-dark);font-weight:800;letter-spacing:2.5px;font-size:.78rem;text-transform:uppercase;}
+  h2{font-size:clamp(1.6rem,3vw,2.2rem);margin:8px 0 16px;color:var(--charcoal);}
+  .lead{color:var(--grey);max-width:760px;}
+
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  @media(max-width:900px){.grid-2,.grid-3{grid-template-columns:1fr;}.grid-4{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.grid-4{grid-template-columns:1fr;}}
+
+  /* ===== Services ===== */
+  .card{background:#fff;border:1px solid #eee;border-top:4px solid var(--gold);border-radius:12px;padding:28px 24px;box-shadow:0 4px 14px rgba(0,0,0,.05);transition:transform .2s, box-shadow .2s;}
+  .card:hover{transform:translateY(-6px);box-shadow:0 12px 26px rgba(0,0,0,.1);}
+  .card .icon{width:52px;height:52px;border-radius:10px;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:16px;}
+  .card h3{font-size:1.08rem;color:var(--charcoal);margin-bottom:8px;}
+  .card p{font-size:.92rem;color:var(--grey);}
+
+  /* ===== Values ===== */
+  .value{background:var(--charcoal);color:#fff;border-radius:12px;padding:26px 24px;border:1px solid #ffffff14;}
+  .value h3{color:var(--gold);margin-bottom:8px;font-size:1.02rem;}
+  .value p{font-size:.9rem;color:#d9d5cc;}
+
+  /* ===== Stats strip ===== */
+  .stats{background:var(--gold);color:var(--charcoal);}
+  .stats .grid-4{text-align:center;padding:34px 20px;}
+  .stats strong{display:block;font-size:2rem;}
+  .stats span{font-weight:600;font-size:.9rem;}
+
+  /* ===== Team ===== */
+  .team-card{text-align:center;background:#fff;border-radius:12px;padding:30px 22px;border:1px solid #eee;box-shadow:0 4px 14px rgba(0,0,0,.05);}
+  .avatar{width:88px;height:88px;border-radius:50%;background:var(--charcoal);color:var(--gold);font-weight:800;font-size:1.7rem;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;}
+  .team-card h3{font-size:1.05rem;color:var(--charcoal);}
+  .team-card .role{color:var(--gold-dark);font-weight:700;font-size:.85rem;margin:4px 0 10px;text-transform:uppercase;letter-spacing:1px;}
+  .team-card p{font-size:.88rem;color:var(--grey);}
+
+  /* ===== Clients ===== */
+  .clients{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  @media(max-width:760px){.clients{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:480px){.clients{grid-template-columns:1fr;}}
+  .client{background:#fff;border:1px solid #eee;border-radius:12px;padding:24px 18px;text-align:center;transition:transform .2s;}
+  .client:hover{transform:translateY(-4px);border-color:var(--gold);}
+  .client .mark{width:64px;height:64px;border-radius:14px;background:var(--gold);color:var(--charcoal);font-weight:800;font-size:1.15rem;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;}
+  .client h3{font-size:.95rem;color:var(--charcoal);}
+  .client span{font-size:.78rem;color:var(--grey);}
+
+  /* ===== References table ===== */
+  .table-wrap{overflow-x:auto;border-radius:12px;border:1px solid #eee;}
+  table{width:100%;border-collapse:collapse;background:#fff;font-size:.9rem;min-width:640px;}
+  th{background:var(--charcoal);color:#fff;text-align:left;padding:14px 16px;font-size:.82rem;letter-spacing:.5px;}
+  td{padding:13px 16px;border-bottom:1px solid #f0f0f0;color:#444;}
+  tr:last-child td{border-bottom:none;}
+  tr:nth-child(even) td{background:var(--light);}
+
+  /* ===== Why choose ===== */
+  .why{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;}
+  @media(max-width:1000px){.why{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:480px){.why{grid-template-columns:1fr;}}
+  .why div{background:#fff;border-radius:12px;padding:24px 18px;text-align:center;border:1px solid #eee;border-bottom:4px solid var(--gold);}
+  .why strong{display:block;color:var(--charcoal);margin-bottom:6px;}
+  .why span{font-size:.85rem;color:var(--grey);}
+
+  /* ===== Contact ===== */
+  .contact-box{background:#fff;border-radius:14px;padding:34px;border:1px solid #eee;box-shadow:0 8px 24px rgba(0,0,0,.06);}
+  .contact-row{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px dashed #eee;}
+  .contact-row:last-child{border-bottom:none;}
+  .contact-row .ic{width:42px;height:42px;flex:none;border-radius:10px;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+  .contact-row strong{display:block;font-size:.82rem;color:var(--grey);text-transform:uppercase;letter-spacing:1px;}
+  form input,form textarea,form select{width:100%;padding:13px 15px;border:1px solid #ddd;border-radius:8px;font:inherit;margin-bottom:14px;background:#fbfaf7;}
+  form input:focus,form textarea:focus,form select:focus{outline:2px solid var(--gold);border-color:transparent;}
+  form textarea{min-height:120px;resize:vertical;}
+  .note{font-size:.78rem;color:var(--grey);margin-top:10px;}
+
+  /* ===== Footer ===== */
+  footer{background:var(--charcoal);color:#cfcbc2;padding:46px 0 24px;font-size:.9rem;}
+  footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:36px;}
+  @media(max-width:800px){footer .cols{grid-template-columns:1fr;}}
+  footer h4{color:var(--gold);margin-bottom:12px;}
+  footer a:hover{color:var(--gold);}
+  footer li{margin-bottom:8px;}
+  .copy{text-align:center;margin-top:36px;padding-top:20px;border-top:1px solid #ffffff1a;font-size:.8rem;color:#8f8b82;}
+  .float-wa{position:fixed;right:20px;bottom:20px;background:#25d366;color:#fff;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 6px 16px rgba(0,0,0,.25);z-index:90;}
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="topbar">
+  <div class="container">
+    <span>📍 Linksfield Rd, Edenvale, Johannesburg, 1609</span>
+    <span>✉️ <a href="mailto:Botlebembalitradingcc@gmail.com">Botlebembalitradingcc@gmail.com</a></span>
+    <span>📞 <a href="tel:+27818046975">081 804 6975</a></span>
+  </div>
+</div>
+
+<!-- Header -->
+<header>
+  <nav>
+    <a class="logo" href="#home">B<em>M</em> TRADING cc<small>INTEGRATED SOLUTIONS</small></a>
+    <button class="burger" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+    <div class="nav-links" id="nav">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#values">Values</a>
+      <a href="#team">Team</a>
+      <a href="#clients">Clients</a>
+      <a href="#contact" class="nav-cta">Get a Quote</a>
+    </div>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="home" style="padding-top:90px;">
+  <div class="container">
+    <span class="badge">Level 1 B-BBEE Contributor · 100% Black Owned</span>
+    <h1>Integrated <span>Supply, Catering &amp; Landscaping</span> Solutions — Serving All Provinces of South Africa</h1>
+    <p>Botlebembali Trading CC has delivered quality products and services since 2007. One accountable supplier for general supply &amp; delivery, corporate catering, grounds maintenance, health &amp; safety equipment, branding and facilities support.</p>
+    <a class="btn btn-gold" href="#contact">Request a Quote</a>
+    <a class="btn btn-outline" href="#services">Explore Our Services</a>
+    <div class="badges">
+      <div><strong>19+</strong>Years in Service</div>
+      <div><strong>Level 1</strong>B-BBEE Contributor</div>
+      <div><strong>100%</strong>Black Owned</div>
+      <div><strong>Nationwide</strong>All 9 Provinces</div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="container grid-2">
+    <div>
+      <span class="kicker">About Us</span>
+      <h2>A Well-Established, Fully Black-Owned Service Company</h2>
+      <p class="lead">Established in 2007, Botlebembali Trading CC has a vision to create a first-class integrated services structure and business solutions within the South African market. Our core business is food and catering services, general supply and delivery, and landscaping — backed by commercial brokerage capability, state-of-the-art technology and efficient logistical follow-up.</p>
+      <p class="lead" style="margin-top:14px;">The Managing Director takes a hands-on approach to every contract, going to extreme lengths to fulfil our promise of superior quality and service. Our motto: <strong>"Maximize your network"</strong> — and the way we do business.</p>
+    </div>
+    <div class="contact-box">
+      <h3 style="margin-bottom:14px;color:var(--charcoal);">Company Details</h3>
+      <div class="contact-row"><div class="ic">🏢</div><div><strong>Registered Name</strong>Botlebembali Trading CC</div></div>
+      <div class="contact-row"><div class="ic">🪪</div><div><strong>Registration No.</strong>2007/136031/23</div></div>
+      <div class="contact-row"><div class="ic">🧾</div><div><strong>Income Tax No.</strong>9329202163</div></div>
+      <div class="contact-row"><div class="ic">🏦</div><div><strong>Bank</strong>First National Bank · Gold Business Account<br>Acc: 63226181468 · Branch: 250655</div></div>
+      <div class="contact-row"><div class="ic">👤</div><div><strong>Managing Director</strong>Sipho Chiya</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<div class="stats">
+  <div class="container grid-4">
+    <div><strong>19+</strong><span>Years in Service</span></div>
+    <div><strong>10+</strong><span>Major Clients Served</span></div>
+    <div><strong>5750m²</strong><span>Sites Maintained (current scope)</span></div>
+    <div><strong>9</strong><span>Provinces Covered</span></div>
+  </div>
+</div>
+
+<!-- Services -->
+<section class="section-alt" id="services">
+  <div class="container">
+    <span class="kicker">Our Products &amp; Services</span>
+    <h2>One Accountable Supplier for Everything Your Organisation Needs</h2>
+    <p class="lead" style="margin-bottom:40px;">All services are delivered under one accountable point of contact, with quotations, delivery schedules and reporting tailored to each client's procurement requirements.</p>
+    <div class="grid-3">
+      <div class="card"><div class="icon">📦</div><h3>General Supply &amp; Delivery</h3><p>Nationwide supply and delivery of office supplies, stationery, furniture, warehousing stock, cleaning &amp; hygiene consumables, PPE and bulk materials — to specification and on time.</p></div>
+      <div class="card"><div class="icon">🍽️</div><h3>Food Services &amp; Catering</h3><p>Corporate, event, conference, workshop and institutional catering — menu planning, on-site service, servers, equipment hire and full event support.</p></div>
+      <div class="card"><div class="icon">🌿</div><h3>Landscaping &amp; Grounds Maintenance</h3><p>Grass cutting, garden and flower bed maintenance, planting, weeding, pruning, hedge trimming, tree felling, litter picking and scheduled site upkeep.</p></div>
+      <div class="card"><div class="icon">🦺</div><h3>Health &amp; Safety Equipment</h3><p>Supply of PPE, safety signage, fire equipment, first-aid provisions and site safety consumables in line with the Occupational Health and Safety Act.</p></div>
+      <div class="card"><div class="icon">👕</div><h3>Textile &amp; Corporate Branding</h3><p>Corporate wear, workwear, embroidery, screen printing, promotional items and branded merchandise.</p></div>
+      <div class="card"><div class="icon">🗄️</div><h3>Office &amp; Facilities Support</h3><p>Office furniture supply and installation, layout and fit-out support, cleaning and hygiene services, and general facilities management.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Values -->
+<section id="values">
+  <div class="container">
+    <span class="kicker">Mission, Vision &amp; Core Values</span>
+    <h2>What Drives Us Every Day</h2>
+    <div class="grid-2" style="align-items:stretch;margin-bottom:26px;">
+      <div class="value">
+        <h3>🎯 Our Mission</h3>
+        <p>"To maintain integrity in everything we do, continue to grow and expand to meet the demands of our customers, excel through industry leadership, be competitive, surpass expectations and develop long-lasting relationships with suppliers and customers."</p>
+      </div>
+      <div class="value">
+        <h3>🔭 Our Vision</h3>
+        <p>"Committed to providing a stress-free business experience with superior services that cater for our customers' individual and corporate needs — always conveying the 'Constant and Never-Ending Improvement' spirit, mixed with a passion for excellence."</p>
+      </div>
+    </div>
+    <div class="grid-4">
+      <div class="card"><h3>Integrity</h3><p>Honour all commitments with unwavering standards of honesty, trust, professionalism and ethical behaviour.</p></div>
+      <div class="card"><h3>Quality</h3><p>Put customers first with an individualised business experience that assures satisfaction and earns loyalty.</p></div>
+      <div class="card"><h3>Growth &amp; Profitability</h3><p>Continuous innovation and the pursuit of new ideas and opportunities to accelerate profitable growth.</p></div>
+      <div class="card"><h3>Accountability</h3><p>One responsible point of contact per contract, with clear reporting, honest timelines and director-level oversight.</p></div>
+    </div>
+    <p class="lead" style="margin-top:20px;"><strong>Local Empowerment:</strong> Supporting local small and medium businesses, creating jobs and transferring skills in the communities where we work.</p>
+  </div>
+</section>
+
+<!-- Team -->
+<section class="section-alt" id="team">
+  <div class="container">
+    <span class="kicker">Executive Management &amp; Key Personnel</span>
+    <h2>Director-Led Service, Hands-On Delivery</h2>
+    <p class="lead" style="margin-bottom:36px;">Our close corporation structure ensures continuity and an efficient, integrated management structure in which all employees are accountable, monitored and motivated. We comply fully with the Companies Act No. 71 of 2008 and the Department of Labour's requirements.</p>
+    <div class="grid-3">
+      <div class="team-card">
+        <div class="avatar">SC</div>
+        <h3>Sipho Chiya</h3>
+        <div class="role">Founding Member &amp; Managing Director</div>
+        <p>Overall management of the company, personally involved in every contract — from quotation to close-out. 100% shareholder.</p>
+      </div>
+      <div class="team-card">
+        <div class="avatar">MC</div>
+        <h3>Mbalenhle Chemane</h3>
+        <div class="role">Project Manager · 8 Years' Experience</div>
+        <p>Contract holder and single point of accountability — planning, programme, quality, compliance, client liaison, reporting and invoicing.</p>
+      </div>
+      <div class="team-card">
+        <div class="avatar">DM</div>
+        <h3>Dankie Mashamba</h3>
+        <div class="role">Site Manager · 7 Years' Experience</div>
+        <p>Day-to-day site control — team allocation, cutting cycles, equipment, safety on site and the standard of finish handed over.</p>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:28px;">A dedicated team of <strong>five general workers</strong> is deployed across sites on a fixed rotation, plus a <strong>Technical Lead (Horticulture &amp; Landscape Specialist)</strong> with a minimum of 5 years' experience is appointed on award of each contract.</p>
+  </div>
+</section>
+
+<!-- Clients -->
+<section id="clients">
+  <div class="container">
+    <span class="kicker">Clients We Have Served</span>
+    <h2>Trusted by Corporates, Government &amp; Professional Firms</h2>
+    <p class="lead" style="margin-bottom:36px;">Over 19 years we have delivered supply, catering, construction and grounds-maintenance contracts across South Africa.</p>
+    <div class="clients">
+      <div class="client"><div class="mark">S</div><h3>SAPPI</h3><span>Forestry &amp; Paper</span></div>
+      <div class="client"><div class="mark">RNM</div><h3>Ray Nkonyeni Municipality</h3><span>Local Government</span></div>
+      <div class="client"><div class="mark">MA</div><h3>Mpeta Attorneys</h3><span>Legal Services</span></div>
+      <div class="client"><div class="mark">JZF</div><h3>Jacob Zuma Foundation</h3><span>Non-Profit</span></div>
+      <div class="client"><div class="mark">DOH</div><h3>Dept. of Human Settlements</h3><span>Provincial Government</span></div>
+      <div class="client"><div class="mark">ULM</div><h3>Umuziwabantu Local Municipality</h3><span>Local Government</span></div>
+      <div class="client"><div class="mark">DOS</div><h3>Dept. of Social Development</h3><span>Provincial Government</span></div>
+      <div class="client"><div class="mark">TCE</div><h3>Tibba Consulting Engineers</h3><span>Engineering</span></div>
+      <div class="client"><div class="mark">NE</div><h3>Ndosi Engineering</h3><span>Engineering</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- References -->
+<section class="section-alt">
+  <div class="container">
+    <span class="kicker">References / Past Experience</span>
+    <h2>A Proven Track Record Since 2007</h2>
+    <div class="table-wrap" style="margin-top:30px;">
+      <table>
+        <thead><tr><th>Nature of Work</th><th>Period / Date</th><th>Client</th><th>Contact Person</th><th>Contact</th></tr></thead>
+        <tbody>
+          <tr><td>Paving and Kerb Installation</td><td>25-05-2016</td><td>Human Settlements</td><td>T. Ngwenya</td><td>031 336 5162</td></tr>
+          <tr><td>Paving and Kerb Installation</td><td>01-04-2015 – 01-09-2016</td><td>Ray Nkonyeni Municipality</td><td>S. Dlomo</td><td>039 688 2000</td></tr>
+          <tr><td>Catering</td><td>21-11-2015</td><td>Jacob Zuma Foundation</td><td>Barbara</td><td>084 522 2203</td></tr>
+          <tr><td>Showroom Houses</td><td>08-08-2013</td><td>Umuziwabantu Local Municipality</td><td>M. Nokeni</td><td>012 427 8033</td></tr>
+          <tr><td>Supply &amp; Delivery of Materials</td><td>18-11-2011</td><td>Social Development</td><td>E. Zulu</td><td>033 897 4217</td></tr>
+          <tr><td>Supply &amp; Delivery of Materials</td><td>14-12-2015</td><td>Tibba Consulting Engineers</td><td>S. Fiso</td><td>039 315 1645</td></tr>
+          <tr><td>Supply &amp; Delivery of Materials</td><td>08-06-2016</td><td>Ndosi Engineering</td><td>SC Cele</td><td>083 692 3647</td></tr>
+          <tr><td>Landscaping &amp; Garden Maintenance (12 months)</td><td>03-06-2024 – 30-05-2025</td><td>TJZGP Group</td><td>J. Mbene</td><td>012 065 4958</td></tr>
+          <tr><td>Landscaping &amp; Garden Maintenance (24 months)</td><td>01-07-2024 – 30-06-2026</td><td>Manyawusi Trading Enterprise</td><td>L. Makhubela</td><td>010 880 0190</td></tr>
+          <tr><td>Landscaping &amp; Garden Maintenance (12 months)</td><td>01-04-2024 – 31-12-2024</td><td>KSA Proprietary Limited</td><td>J. Ramakwetsane</td><td>079 691 3946</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Why choose -->
+<section>
+  <div class="container">
+    <span class="kicker">Why Choose Botlebembali</span>
+    <h2>Six Reasons Clients Stay With Us</h2>
+    <div class="why" style="margin-top:30px;">
+      <div><strong>One Accountable Supplier</strong><span>Supply, catering, construction &amp; landscaping under a single contract.</span></div>
+      <div><strong>19 Years of Delivery</strong><span>Track record with municipalities, government, corporates &amp; firms.</span></div>
+      <div><strong>Level 1 B-BBEE</strong><span>100% black owned — maximum procurement recognition for clients.</span></div>
+      <div><strong>Director-Led Service</strong><span>The MD is personally involved in every contract.</span></div>
+      <div><strong>Nationwide Reach</strong><span>Integrated services in all regions of South Africa.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section-alt" id="contact">
+  <div class="container grid-2" style="align-items:start;">
+    <div>
+      <span class="kicker">Let's Work Together</span>
+      <h2>Request a Quote or Book a Site Assessment</h2>
+      <p class="lead" style="margin-bottom:26px;">Contact Sipho Chiya, Managing Director, for quotations, site assessments or vendor registration documents.</p>
+      <div class="contact-box">
+        <div class="contact-row"><div class="ic">📞</div><div><strong>Phone</strong><a href="tel:+27818046975">081 804 6975</a> · <a href="tel:+27794556180">079 455 6180</a></div></div>
+        <div class="contact-row"><div class="ic">✉️</div><div><strong>Email</strong><a href="mailto:Botlebembalitradingcc@gmail.com">Botlebembalitradingcc@gmail.com</a></div></div>
+        <div class="contact-row"><div class="ic">📍</div><div><strong>Address</strong>Linksfield Rd, Edenvale, Johannesburg, 1609</div></div>
+        <div class="contact-row"><div class="ic">🌐</div><div><strong>Areas of Operation</strong>All provinces of South Africa</div></div>
+        <div class="contact-row"><div class="ic">🪪</div><div><strong>Reg. No.</strong>2007/136031/23 · Level 1 B-BBEE Contributor</div></div>
+      </div>
+    </div>
+    <div class="contact-box">
+      <h3 style="margin-bottom:16px;color:var(--charcoal);">Send Us a Message</h3>
+      <form action="mailto:Botlebembalitradingcc@gmail.com" method="post" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your Name *" required>
+        <input type="text" name="company" placeholder="Company / Organisation">
+        <input type="email" name="email" placeholder="Your Email *" required>
+        <input type="tel" name="phone" placeholder="Phone Number">
+        <select name="service" required>
+          <option value="" disabled selected>Select a Service *</option>
+          <option>General Supply &amp; Delivery</option>
+          <option>Food Services &amp; Catering</option>
+          <option>Landscaping &amp; Grounds Maintenance</option>
+          <option>Health &amp; Safety Equipment</option>
+          <option>Textile &amp; Corporate Branding</option>
+          <option>Office &amp; Facilities Support</option>
+          <option>Other / Multiple Services</option>
+        </select>
+        <textarea name="message" placeholder="Tell us about your requirements *" required></textarea>
+        <button class="btn btn-gold" type="submit" style="width:100%;border:none;cursor:pointer;">Send Message</button>
+        <p class="note">This opens your email app with the message pre-filled — no data is stored on this website.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="cols">
+      <div>
+        <h4>Botlebembali Trading CC</h4>
+        <p>Integrated Supply, Catering &amp; Landscaping Solutions. Established 2007 — 19+ years of quality delivery across South Africa.</p>
+        <p style="margin-top:10px;">"Maximize your network" — our motto and the way we do business.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Products &amp; Services</a></li>
+          <li><a href="#team">Key Personnel</a></li>
+          <li><a href="#clients">Clients</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Compliance</h4>
+        <ul>
+          <li>Reg. No. 2007/136031/23</li>
+          <li>Income Tax No. 9329202163</li>
+          <li>Level 1 B-BBEE Contributor</li>
+          <li>100% Black Owned</li>
+          <li>Companies Act No. 71 of 2008</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">© 2026 Botlebembali Trading CC. All rights reserved. Serving all provinces of South Africa.</div>
+  </div>
+</footer>
+
+<a class="float-wa" href="https://wa.me/27818046975" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+<script>
+  // Close mobile menu when a link is clicked
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.addEventListener('click',()=>document.getElementById('nav').classList.remove('open'));
+  });
+</script>
+</body>
+</html>
+'''
+
+import os
+outdir = '/mnt/agents/output/botlebembali-website'
+os.makedirs(outdir, exist_ok=True)
+path = os.path.join(outdir, 'index.html')
+with open(path, 'w', encoding='utf-8') as f:
+    f.write(html)
+print(path, os.path.getsize(path), 'bytes')
